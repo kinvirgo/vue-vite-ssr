@@ -12,6 +12,7 @@
   "dependencies": {
     "@vue/server-renderer": "^3.0.11",
     "express": "^4.17.1",
+    "serialize-javascript": "^5.0.1",
     "vue": "^3.0.5",
     "vue-router": "4"
   },
