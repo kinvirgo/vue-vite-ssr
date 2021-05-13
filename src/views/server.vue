@@ -1,22 +1,22 @@
 <template>
     <h3>服务端</h3>
-    <!-- server：{{ server }} -->
+    server：{{ server }}
 </template>
 <script lang="ts">
 import { defineComponent } from "vue";
-// import { Store, useStore } from "vuex";
-// import { AsyncDataParam, key, State } from "../store";
+import { Store, useStore } from "vuex";
+import { AsyncDataParam, key, State } from "../store";
 export default defineComponent({
-    // asyncData({ store, route }: AsyncDataParam) {
-    //     console.log(">>>", route);
+    asyncData({ store, route }: AsyncDataParam) {
+        console.log(">>>", route);
         
-    //     return store.dispatch("ASYNC_SERVER");
-    // },
+        return store.dispatch("ASYNC_SERVER");
+    },
     setup(props, context) {
-        // const { server } = useStore<State>(key).state;
+        const { server } = useStore<State>(key).state;
 
         return {
-            // server,
+            server,
             // ...toRefs()
         };
     },
