@@ -4,12 +4,15 @@
     "version": "0.0.0",
     "scripts": {
         "dev": "node ./server.js",
-        "build": "vite build",
-        "preview": "vite preview"
+        "build": "yarn build:client && yarn build:server",
+        "build:client": "vite build --ssrManifest --outDir dist/client",
+        "build:server": "vite build --ssr src/entry-server.js --outDir dist/server",
+        "serve": "cross-env NODE_ENV=production node server"
     },
     "dependencies": {
         "axios": "^0.24.0",
         "compression": "^1.7.4",
+        "cross-env": "^7.0.3",
         "express": "^4.17.2",
         "helmet": "^5.0.2",
         "vue": "^3.2.25",

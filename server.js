@@ -12,6 +12,9 @@ async function createServer(
     const app = express()
 
     if (isProd) {
+        // 生产环境
+        app.use(require('compression')())
+        app.use(express.static('dist/client'))
     } else {
         // 开发环境
         let { createServer: _createServer } = require('vite')
@@ -35,12 +38,15 @@ async function createServer(
     // 映射文件
     const manifest = isProd ? require('./dist/client/ssr-manifest.json') : {}
 
-    app.use('/ssr/*', async (req, res) => {
+    app.get('/ssr/*', async (req, res) => {
         const { originalUrl: url } = req
         console.log(`[server] ${new Date()} - ${url}`)
         try {
             let template, render
             if (isProd) {
+                // 生产环境
+                template = htmlTemplate
+                render = require('./dist/server/entry-server.js').render
             } else {
                 // 开发环境
                 template = fs.readFileSync(resolve('index.html'), 'utf-8')
@@ -48,8 +54,6 @@ async function createServer(
                 render = (await vite.ssrLoadModule('/src/entry-server.js'))
                     .render
             }
-
-            console.log('>>> render', url)
 
             let { html, state, preloadLinks } = await render(url, manifest)
             // 替换html标记
