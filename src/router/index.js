@@ -18,8 +18,8 @@ const routes = [
 export function createRouter() {
     return _createRouter({
         history: import.meta.env.SSR
-            ? createMemoryHistory()
-            : createWebHistory(),
+            ? createMemoryHistory('/ssr')
+            : createWebHistory('/ssr'),
         routes,
     })
 }

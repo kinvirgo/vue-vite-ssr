@@ -35,7 +35,7 @@ async function createServer(
     // 映射文件
     const manifest = isProd ? require('./dist/client/ssr-manifest.json') : {}
 
-    app.use('*', async (req, res) => {
+    app.use('/ssr/*', async (req, res) => {
         const { originalUrl: url } = req
         console.log(`[server] ${new Date()} - ${url}`)
         try {
@@ -49,7 +49,7 @@ async function createServer(
                     .render
             }
 
-            console.log(">>> render", url);
+            console.log('>>> render', url)
 
             let { html, state, preloadLinks } = await render(url, manifest)
             // 替换html标记
@@ -65,10 +65,9 @@ async function createServer(
     return { app }
 }
 
-
 // 创建服务
 createServer().then(({ app }) => {
     app.listen(5000, () => {
-        console.log("[server] http://localhost:5000");
-    });
-});
+        console.log('[server] http://localhost:5000')
+    })
+})
