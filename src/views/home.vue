@@ -7,13 +7,13 @@
     import { useRouter } from 'vue-router'
     export default defineComponent({
         asyncData(route, components) {
-            console.log('>>>> asyncData', components)
+            // console.log('>>>> asyncData', components)
             return { test: '测试' }
         },
         setup(props, context) {
             const internalInstance = getCurrentInstance()
             // console.log('>>>', internalInstance)
-            console.log('>>>', useRouter().currentRoute.value )
+            // console.log('>>>', useRouter().currentRoute.value )
 
             return {}
         },

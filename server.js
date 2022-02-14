@@ -71,6 +71,11 @@ async function createServer(
         }
     })
 
+    // 重定向
+    app.use('*', async (req, res) => {
+        res.redirect('/ssr/')
+    })
+
     return { app }
 }
 

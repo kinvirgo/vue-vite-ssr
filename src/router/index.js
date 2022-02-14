@@ -33,7 +33,7 @@ function addRouteName(routes) {
     return (routes || []).map(route => {
         // 是否有name字段
         if (!route.hasOwnProperty('name')) {
-            route.name = name_id++
+            route.name = `rid_${name_id++}`
         }
         // 是否存在子路由
         if (route.hasOwnProperty('children')) {
