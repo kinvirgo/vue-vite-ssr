@@ -1,5 +1,5 @@
 <template>
-    <h3>服务器渲染-首页</h3>
+    <h3>服务器渲染-关于我们</h3>
 </template>
 <script>
     import { defineComponent } from 'vue'
