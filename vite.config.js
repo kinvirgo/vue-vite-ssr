@@ -10,6 +10,10 @@ export default defineConfig({
             '@': resolve(__dirname, 'src'),
         },
     },
+
     // 终端日志禁止清屏
     clearScreen: false,
+    build: {
+        assetsDir: 'static',
+    },
 })

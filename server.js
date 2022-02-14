@@ -14,7 +14,12 @@ async function createServer(
     if (isProd) {
         // 生产环境
         app.use(require('compression')())
-        app.use(express.static('dist/client'))
+        app.use(
+            express.static('dist/client', {
+                index: false,
+                maxAge: 864000 /* 一天 */,
+            }),
+        )
     } else {
         // 开发环境
         let { createServer: _createServer } = require('vite')
