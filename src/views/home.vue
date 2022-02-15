@@ -10,16 +10,15 @@
         reactive,
         toRefs,
     } from 'vue'
-    // import { } from "@/store/useStore"
+    import { useStore, toStore, StoreTypes } from '@/utils/useStore'
     export default defineComponent({
-        asyncData(route, components) {
-            // console.log('>>>> asyncData', components)
-            return { test: '测试' }
+        async asyncData(route, components) {
+            // 存储到store中
+            toStore(StoreTypes.HOME, { title: '测试' })
         },
         setup(props, context) {
-            const initData = inject('__INIT_DATA__')
-
-            const state = reactive({ ...initData })
+            const initState = useStore(StoreTypes.HOME)
+            const state = reactive({ ...initState })
 
             const internalInstance = getCurrentInstance()
             // console.log('>>>', internalInstance)

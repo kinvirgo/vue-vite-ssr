@@ -13,23 +13,14 @@ export const StoreTypes = {
 
 // onBeforeRender钩子函数调用存储
 export function toStore(type, state) {
-    // store.set()
+    store.set(type, state)
 }
 
 // step中hooks函数
 export function useStore(type) {
-
-
+    const state = inject(__INIT_DATA__, {})
+    return state[type]
 }
-
-// 定义storeType = {}
-
-// export const __INIT_DATA__ = '__INIT_DATA__'
-
-// export default function useStore(type) {
-//     const state = inject(__INIT_DATA__, {})
-//     return state[type]
-// }
 
 /**
  * 深拷贝对象
