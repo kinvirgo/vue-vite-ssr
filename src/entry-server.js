@@ -8,12 +8,15 @@ export async function render(url, manifest) {
     // 需要手动触发,详细见：https://next.router.vuejs.org/zh/guide/migration/#%E5%B0%86-onready-%E6%94%B9%E4%B8%BA-isready
     await router.isReady()
 
-
-
     // 执行asyncData(); 注意顺序与renderToString的顺序
-    const data = await invokeAsyncData({ route: router.currentRoute.value }, router)
+    const data = await invokeAsyncData(
+        { route: router.currentRoute.value },
+        router,
+    )
 
     console.log('>>> data', router.currentRoute.value)
+
+    app.provide('__INIT_DATA__', { title: '123' })
 
     const ctx = {}
     const html = await renderToString(app, ctx)

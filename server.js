@@ -43,6 +43,7 @@ async function createServer(
     // 映射文件
     const manifest = isProd ? require('./dist/client/ssr-manifest.json') : {}
 
+    // app.get('/ssr/*', async (req, res) => {
     app.get('/ssr/*', async (req, res) => {
         const { originalUrl: url } = req
         console.log(`[server] ${new Date()} - ${url}`)
