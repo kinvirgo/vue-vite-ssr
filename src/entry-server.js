@@ -2,6 +2,7 @@ import { createApp } from './main'
 import { renderToString } from 'vue/server-renderer'
 import serialize from 'serialize-javascript'
 import { useInitStore } from '@/stores/init'
+import { executeAsyncData } from '@/utils/share'
 
 export async function render(url, manifest) {
     const { app, router, pinia } = createApp()
@@ -12,7 +13,8 @@ export async function render(url, manifest) {
     await router.isReady()
 
     // 执行asyncData(); 注意顺序与renderToString的顺序
-    await invokeAsyncData({ route: router.currentRoute.value, store })
+    // await invokeAsyncData({ route: router.currentRoute.value, store })
+    await executeAsyncData(router.currentRoute.value, store)
 
     const ctx = {}
     const html = await renderToString(app, ctx)
@@ -23,11 +25,11 @@ export async function render(url, manifest) {
     return { html, preloadLinks, state }
 }
 
-function invokeAsyncData({ route, store }) {
-    return Promise.allSettled(
-        route.matched.map(({ components }) => {
-            let asyncData = components.default.asyncData || false
-            return asyncData && asyncData({ store })
-        }),
-    )
-}
+// function invokeAsyncData({ route, store }) {
+//     return Promise.allSettled(
+//         route.matched.map(({ components }) => {
+//             let asyncData = components.default.asyncData || false
+//             return asyncData && asyncData({ store })
+//         }),
+//     )
+// }

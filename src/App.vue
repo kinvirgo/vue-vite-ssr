@@ -21,4 +21,18 @@
         },
     })
 </script>
-<style lang="scss"></style>
+<style lang="scss">
+    h3 {
+        font-size: 16px;
+        color: #333;
+    }
+
+    ul,
+    li {
+        margin: 0;
+        padding: 0;
+    }
+    li {
+        list-style: none;
+    }
+</style>

@@ -1,5 +1,5 @@
 <template>
-    <h4>这里是footer--{{ text }}</h4>
+    <h4 class="h4">这里是footer--{{ text }}</h4>
 </template>
 <script>
     import { defineComponent, reactive, toRefs } from 'vue'
@@ -20,4 +20,8 @@
         },
     })
 </script>
-<style lang="scss"></style>
+<style lang="scss">
+.h4{
+    color: red;
+}
+</style>
