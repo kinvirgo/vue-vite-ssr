@@ -3,7 +3,7 @@
 # Prettier配置优先级别 > EditorConfig配置
 
 # 指定字符数后强制换行，默认是 80 列
-printWidth: 80
+printWidth: 100
 
 # tab键盘宽度
 tabWidth: 4

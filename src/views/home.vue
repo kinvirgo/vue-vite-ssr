@@ -6,7 +6,7 @@
     import { defineComponent, reactive, toRefs } from 'vue'
     import { useInitStore } from '@/stores/init'
     export default defineComponent({
-        async asyncData({ store }) {
+        async asyncData({ route, store }) {
             // 存储到store中
             store.homeInitState = { title: '测试home1' }
         },

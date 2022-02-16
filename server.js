@@ -4,10 +4,7 @@ const resolve = p => path.resolve(__dirname, p)
 const express = require('express')
 const helmet = require('helmet')
 
-async function createServer(
-    root = process.cwd(),
-    isProd = process.env.NODE_ENV === 'production',
-) {
+async function createServer(root = process.cwd(), isProd = process.env.NODE_ENV === 'production') {
     let vite
     const app = express()
 
@@ -38,16 +35,14 @@ async function createServer(
     }
 
     // html模版
-    const htmlTemplate = isProd
-        ? fs.readFileSync(resolve('dist/client/index.html'), 'utf-8')
-        : ''
+    const htmlTemplate = isProd ? fs.readFileSync(resolve('dist/client/index.html'), 'utf-8') : ''
     // 映射文件
-    const manifest = isProd ? require('./dist/client/ssr-manifest.json') : {}
+    // const manifest = isProd ? require('./dist/client/ssr-manifest.json') : {}
 
-    // app.get('/ssr/*', async (req, res) => {
     app.get('/ssr/*', async (req, res) => {
-        const { originalUrl: url } = req
-        console.log(`[server] ${new Date()} - ${url}`)
+        const { url, query } = req
+        console.log(`[server] ${new Date()} - ${url} - ${JSON.stringify(query)}`)
+
         try {
             let template, render
             if (isProd) {
@@ -58,14 +53,12 @@ async function createServer(
                 // 开发环境
                 template = fs.readFileSync(resolve('index.html'), 'utf-8')
                 template = await vite.transformIndexHtml(url, template)
-                render = (await vite.ssrLoadModule('/src/entry-server.js'))
-                    .render
+                render = (await vite.ssrLoadModule('/src/entry-server.js')).render
             }
-
-            let { html, state, preloadLinks } = await render(url, manifest)
+            let { html, state } = await render(url, query)
             // 替换html标记
             html = template
-                .replace(`<!--init-data-->`, `<script>window.__INITIAL_DATA__=${ state }</script>`)
+                .replace(`<!--init-data-->`, `<script>window.__INITIAL_DATA__=${state}</script>`)
                 .replace(`<!--app-html-->`, html)
 
             res.status(200).set({ 'Content-Type': 'text/html' }).end(html)

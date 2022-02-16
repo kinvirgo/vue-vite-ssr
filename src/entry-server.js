@@ -4,7 +4,7 @@ import serialize from 'serialize-javascript'
 import { useInitStore } from '@/stores/init'
 import { executeAsyncData } from '@/utils/share'
 
-export async function render(url, manifest) {
+export async function render(url) {
     const { app, router, pinia } = createApp()
     const store = useInitStore()
     // 去掉base路由才能正常访问
@@ -24,12 +24,3 @@ export async function render(url, manifest) {
 
     return { html, preloadLinks, state }
 }
-
-// function invokeAsyncData({ route, store }) {
-//     return Promise.allSettled(
-//         route.matched.map(({ components }) => {
-//             let asyncData = components.default.asyncData || false
-//             return asyncData && asyncData({ store })
-//         }),
-//     )
-// }

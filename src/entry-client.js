@@ -19,10 +19,7 @@ router.isReady().then(() => {
         // 优化过滤
         let isSameCompoent = false
         let components = toMatchedComponents.filter((compnent, index) => {
-            return (
-                isSameCompoent ||
-                (isSameCompoent = fromMatchedComponents[index] !== compnent)
-            )
+            return isSameCompoent || (isSameCompoent = fromMatchedComponents[index] !== compnent)
         })
 
         // 需要执行async的组件
