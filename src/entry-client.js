@@ -1,10 +1,12 @@
 import { createApp } from './main'
 
-const { app, router } = createApp()
+const { app, router, pinia } = createApp()
 
 router.isReady().then(() => {
 
-    app.provide('__INIT_DATA__', { title: '123' })
+    console.log(window.__INIT_DATA__);
+
+    pinia.state.value = window.__INIT_DATA__
 
     app.mount('#app')
 })

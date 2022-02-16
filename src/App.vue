@@ -7,6 +7,9 @@
         <li>
             <a href="/ssr/about">关于我们</a>
         </li>
+        <li>
+            <a href="/ssr/footer">footer</a>
+        </li>
     </ul>
     <router-view></router-view>
 </template>

@@ -2,15 +2,18 @@
     <h4>这里是footer</h4>
 </template>
 <script>
-    import { defineComponent, getCurrentInstance } from 'vue'
+    import { defineComponent, reactive, toRefs } from 'vue'
     export default defineComponent({
-        asyncData(route) {
-            // console.log(">>>> asyncData", route);
-            return { val: '二级路由' }
+        asyncData({ store }) {
+            // 存储到store中
+            store.footerInitState = { title: '测试footer' }
         },
         setup(props, context) {
-            const internalInstance = getCurrentInstance()
-            return {}
+            const state = reactive({})
+
+            return {
+                ...toRefs(state),
+            }
         },
     })
 </script>

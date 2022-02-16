@@ -3,26 +3,18 @@
     <router-view></router-view>
 </template>
 <script>
-    import {
-        defineComponent,
-        getCurrentInstance,
-        inject,
-        reactive,
-        toRefs,
-    } from 'vue'
-    import { useStore, toStore, StoreTypes } from '@/utils/useStore'
+    import { defineComponent, reactive, toRefs } from 'vue'
+    import { useInitStore } from '@/store/init'
     export default defineComponent({
-        async asyncData(route, components) {
+        async asyncData({ store }) {
             // 存储到store中
-            toStore(StoreTypes.HOME, { title: '测试' })
+            store.homeInitState = { title: '测试home1' }
         },
         setup(props, context) {
-            const initState = useStore(StoreTypes.HOME)
-            const state = reactive({ ...initState })
+            const store = useInitStore()
+            console.log('>>>', { ...store.homeInitState })
 
-            const internalInstance = getCurrentInstance()
-            // console.log('>>>', internalInstance)
-            // console.log('>>>', useRouter().currentRoute.value )
+            const state = reactive({ ...store.homeInitState })
 
             return {
                 ...toRefs(state),
