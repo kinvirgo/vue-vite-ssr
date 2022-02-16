@@ -13,7 +13,6 @@ export async function render(url) {
     await router.isReady()
 
     // 执行asyncData(); 注意顺序与renderToString的顺序
-    // await invokeAsyncData({ route: router.currentRoute.value, store })
     await executeAsyncData(router.currentRoute.value, store)
 
     const ctx = {}
