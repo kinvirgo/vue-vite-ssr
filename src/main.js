@@ -7,6 +7,7 @@ export function createApp() {
     const app = createSSRApp(App)
     const router = createRouter()
     const pinia = createPinia()
+
     app.use(router)
     app.use(pinia)
 
