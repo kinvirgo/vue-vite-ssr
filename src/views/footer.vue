@@ -1,15 +1,18 @@
 <template>
-    <h4>这里是footer</h4>
+    <h4>这里是footer--{{ text }}</h4>
 </template>
 <script>
     import { defineComponent, reactive, toRefs } from 'vue'
+    import { useInitStore } from '@/stores/init'
     export default defineComponent({
-        asyncData({ store }) {
+        async asyncData({ store }) {
             // 存储到store中
-            store.footerInitState = { title: '测试footer' }
+            store.footerInitState = { text: '来自footer的异步数据' }
         },
         setup(props, context) {
-            const state = reactive({})
+            // 初始数据
+            const { footerInitState } = useInitStore()
+            const state = reactive({ ...footerInitState })
 
             return {
                 ...toRefs(state),

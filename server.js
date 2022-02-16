@@ -65,7 +65,7 @@ async function createServer(
             let { html, state, preloadLinks } = await render(url, manifest)
             // 替换html标记
             html = template
-                .replace(`<!--init-data-->`, `<script>window.__INIT_DATA__=${ state }</script>`)
+                .replace(`<!--init-data-->`, `<script>window.__INITIAL_DATA__=${ state }</script>`)
                 .replace(`<!--app-html-->`, html)
 
             res.status(200).set({ 'Content-Type': 'text/html' }).end(html)

@@ -1,7 +1,7 @@
 import { createApp } from './main'
 import { renderToString } from 'vue/server-renderer'
 import serialize from 'serialize-javascript'
-import { useInitStore } from '@/store/init'
+import { useInitStore } from '@/stores/init'
 
 export async function render(url, manifest) {
     const { app, router, pinia } = createApp()
@@ -20,10 +20,9 @@ export async function render(url, manifest) {
 
     const state = serialize(pinia.state.value)
 
-    console.log('>>> pinia', state)
-
     return { html, preloadLinks, state }
 }
+
 function invokeAsyncData({ route, store }) {
     return Promise.allSettled(
         route.matched.map(({ components }) => {

@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 
-export const useInitStore = defineStore('__INIT_DATA__', {
+export const useInitStore = defineStore('init', {
     state() {
         return {
             homeInitState: null,
@@ -8,4 +8,3 @@ export const useInitStore = defineStore('__INIT_DATA__', {
         }
     },
 })
-
