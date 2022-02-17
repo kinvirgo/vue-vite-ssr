@@ -26,6 +26,8 @@ export async function render(url, manifest) {
     const teleports = ctx.teleports || {}
     const state = serialize(pinia.state.value)
 
+    console.log(">>> teleports", teleports);
+
     return { html, state, preloadLinks, teleports }
 }
 

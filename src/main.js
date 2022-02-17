@@ -16,7 +16,7 @@ export function createApp() {
     app.use(router)
     app.use(pinia)
     app.use(metaManager)
-    app.use(plugin)
+    // app.use(plugin)
 
     return { app, router, pinia }
 }

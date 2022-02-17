@@ -7,11 +7,6 @@
     import { defineComponent, reactive, toRefs, useSSRContext } from 'vue'
     import { useInitStore } from '@/stores/init'
     export default defineComponent({
-        metaInfo() {
-            return {
-                title: '首页-服务器渲染',
-            }
-        },
         async asyncData({ route, store }) {
             // 存储到store中
             store.homeInitState = { content: '我是来自服务器数据' }

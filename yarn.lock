@@ -922,10 +922,10 @@ vue-demi@*:
   resolved "https://registry.npmmirror.com/vue-demi/-/vue-demi-0.12.1.tgz#f7e18efbecffd11ab069d1472d7a06e319b4174c"
   integrity sha512-QL3ny+wX8c6Xm1/EZylbgzdoDolye+VpCXRhI2hug9dJTP3OUJ3lmiKN3CsVV3mOJKwFi0nsstbgob0vG7aoIw==
 
-vue-meta@3.0.0-alpha.9:
-  version "3.0.0-alpha.9"
-  resolved "https://registry.npmmirror.com/vue-meta/-/vue-meta-3.0.0-alpha.9.tgz#304999dc67337245947c2a08d7d94df984864c61"
-  integrity sha512-/ff7qNKy4c5NwmDl6N5XK2hhiXEdMeUxvk+SXCs40W9DOgu7VWGqPtgdSnXHnYMRoofkT/nKHE+vXklJ47r9Dw==
+vue-meta@3.0.0-alpha.8:
+  version "3.0.0-alpha.8"
+  resolved "https://registry.npmmirror.com/vue-meta/-/vue-meta-3.0.0-alpha.8.tgz#8b311b6b1726c1c66cd8ce83c3e234adeb22891b"
+  integrity sha512-jhlgRy/sGDpor8pkIhwWCGw5AMR7RtDM6xYqateAKBSy2/enelyrZFivOmo29PLs+zAS9Y57vYoZYB919Tnbug==
 
 vue-router@4.0.12:
   version "4.0.12"

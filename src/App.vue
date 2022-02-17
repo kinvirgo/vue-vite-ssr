@@ -1,6 +1,6 @@
 <template>
     <!-- metainfo -->
-    <metainfo />
+    <!-- <metainfo /> -->
     <!-- header -->
     <header class="header">
         <h3 class="header__title">服务器渲染</h3>
@@ -21,8 +21,14 @@
 </template>
 <script>
     import { defineComponent } from 'vue'
+    import { useMeta } from 'vue-meta'
+    import { useRoute } from 'vue-router'
     export default defineComponent({
         setup(props, context) {
+            const route = useRoute()
+            useMeta(route.meta || {})
+            // console.log('>>>', route.meta)
+
             return {}
         },
     })
@@ -44,7 +50,7 @@
             &--item {
                 font-size: 14px;
                 color: #333;
-                &:hover{
+                &:hover {
                     color: blue;
                 }
             }

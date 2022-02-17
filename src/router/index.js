@@ -4,19 +4,30 @@ const routes = [
     {
         path: '/',
         component: () => import('@/views/home.vue'),
-        meta: {},
+        meta: {
+            // metaInfo
+            title: '首页',
+            htmlAttrs: {
+                lang: 'en',
+                amp: true,
+            },
+        },
         children: [
             {
                 path: 'footer',
                 component: () => import('@/views/footer.vue'),
-                meta: {},
+                meta: {
+                    title: '二级路由',
+                },
             },
         ],
     },
     {
         path: '/about',
         component: () => import('@/views/about.vue'),
-        meta: {},
+        meta: {
+            title: '关于我们',
+        },
     },
 ]
 

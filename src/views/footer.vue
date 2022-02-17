@@ -5,11 +5,6 @@
     import { defineComponent, reactive, toRefs } from 'vue'
     import { useInitStore } from '@/stores/init'
     export default defineComponent({
-        metaInfo() {
-            return {
-                title: '二级路由-服务器渲染',
-            }
-        },
         async asyncData({ store }) {
             // 存储到store中
             store.footerInitState = { asyncText: '来自footer的异步数据' }

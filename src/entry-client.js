@@ -1,6 +1,7 @@
 import { createApp } from './main'
 import { useInitStore } from './stores/init'
 import { executeAsyncData, getMatchedComponents, getNeedExecuteComponents } from '@/utils/share'
+import { useMeta } from 'vue-meta'
 
 const { app, router, pinia } = createApp()
 
@@ -23,6 +24,9 @@ router.isReady().then(() => {
             getNeedExecuteComponents(getMatchedComponents(to), getMatchedComponents(from)),
             { route: to, store: useInitStore() },
         )
+        // metaInfo
+        // console.log(">>>", to);
+        // useMeta()
     })
 
     app.mount('#app')
