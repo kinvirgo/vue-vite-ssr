@@ -59,7 +59,7 @@ async function createServer(root = process.cwd(), isProd = process.env.NODE_ENV 
             // 替换html标记
             html = template
                 .replace(`<!--preload-links-->`, preloadLinks)
-                .replace(`<!--init-data-->`, `<script>window.__INITIAL_DATA__=${state}</script>`)
+                .replace(`<!--initial-data-->`, `<script>window.__INITIAL_DATA__=${state}</script>`)
                 .replace(`<!--app-html-->`, html)
 
             res.status(200).set({ 'Content-Type': 'text/html' }).end(html)

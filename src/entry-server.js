@@ -3,7 +3,7 @@ import { renderToString } from 'vue/server-renderer'
 import serialize from 'serialize-javascript'
 import { useInitStore } from '@/stores/init'
 import { executeAsyncData, getMatchedComponents } from '@/utils/share'
-import { basename } from "path"
+import { basename } from 'path'
 
 export async function render(url, manifest) {
     const { app, router, pinia } = createApp()
@@ -17,7 +17,7 @@ export async function render(url, manifest) {
     const route = router.currentRoute.value
     await executeAsyncData(getMatchedComponents(route), { route, store })
 
-    const ctx = { title: 'vue服务器渲染组件' }
+    const ctx = { title: 'vue服务器渲染' }
     const html = await renderToString(app, ctx)
 
     const preloadLinks = renderPreloadLinks(ctx.modules, manifest)

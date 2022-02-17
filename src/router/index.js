@@ -24,11 +24,11 @@ const routes = [
     },
 ]
 
-export function createRouter() {
+export function createRouter(base) {
     return _createRouter({
         history: import.meta.env.SSR
-            ? createMemoryHistory('/ssr')
-            : createWebHistory('/ssr'),
+            ? createMemoryHistory(base)
+            : createWebHistory(base),
         routes,
     })
 }

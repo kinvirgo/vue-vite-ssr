@@ -5,7 +5,7 @@ import App from '@/App.vue'
 
 export function createApp() {
     const app = createSSRApp(App)
-    const router = createRouter()
+    const router = createRouter('/ssr')
     const pinia = createPinia()
 
     app.use(router)
