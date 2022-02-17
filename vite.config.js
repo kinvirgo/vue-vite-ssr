@@ -10,6 +10,16 @@ export default defineConfig({
             '@': resolve(__dirname, 'src'),
         },
     },
+    // css配置
+    css: {
+        preprocessorOptions: {
+            // scss预处理
+            scss: {
+                additionalData: `@import "./src/scss/utils.scss";`,
+                charset: false,
+            },
+        },
+    },
     // 终端日志禁止清屏
     clearScreen: false,
     build: {

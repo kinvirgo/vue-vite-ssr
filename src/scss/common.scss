@@ -1,0 +1,300 @@
+/* reset.css S */
+*,
+::after,
+::before {
+    -webkit-box-sizing: inherit;
+    box-sizing: inherit;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    color: #333;
+    font-family: "Helvetica Neue", "Tahoma", "Arial", "PingFangSC-Regular", "Hiragino Sans GB",
+        "Microsoft Yahei", sans-serif;
+    line-height: 1.2;
+    -webkit-font-smoothing: antialiased;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    -webkit-text-size-adjust: none;
+    -moz-text-size-adjust: none;
+    -ms-text-size-adjust: none;
+    text-size-adjust: none;
+}
+
+body,
+button,
+dd,
+dl,
+ol,
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+a {
+    outline: 0;
+    color: inherit;
+    text-decoration: none;
+}
+
+a,
+img {
+    -webkit-touch-callout: none;
+}
+
+button,
+input,
+select,
+textarea {
+    outline: 0;
+    border: none;
+    font-size: inherit;
+    font-family: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    margin: 0;
+    font-weight: 400;
+}
+
+img {
+    max-width: 100%;
+}
+
+textarea {
+    resize: none;
+}
+
+select {
+    background-color: transparent;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 100px #fff inset;
+    box-shadow: 0 0 0 100px #fff inset;
+}
+
+.clearfix {
+    zoom: 1;
+}
+
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    line-height: 0;
+    visibility: hidden;
+    clear: both;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+/* reset.css E */
+
+/* common.css S */
+
+// https://h5static.oss-accelerate.aliyuncs.com/lapp/vip/search-notices/font/XinYeNianTi-2.otf
+
+@font-face {
+    font-family: 'XinYeNianTi';
+    // src: url('https://h5static.oss-accelerate.aliyuncs.com/lapp/vip/search-notices/font/XinYeNianTi-2.otf');
+    src: url('../fonts/XinYeNianTi-2.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+:root {
+    --jxb-poster-width: 750;
+    --jxb-poster-height: 1330;
+
+    --jxb-show-poster-width: 680px;
+    // 750 / 1334 => w / h
+    // h = 1334 * w / 750
+    --jxb-show-poster-height: calc(var(--jxb-poster-height) * var(--jxb-show-poster-width) / var(--jxb-poster-width));
+    --jxb-publish-y: calc(var(--jxb-show-poster-height) / 2);
+
+
+    /* ios安全区域 */
+
+    --safe-constant-bottom: constant(safe-area-inset-bottom);
+    /* 兼容 iOS < 11.2 */
+    --safe-env-bottom: env(safe-area-inset-bottom);
+    /* 兼容 iOS >= 11.2 */
+}
+
+// 设备比例判断
+@media screen and (min-aspect-ratio: 375 / 667) {
+
+    // 如果宽高比小于375:667的话，显示这个内容
+    // body {
+    //     background: red;
+    // }
+
+    // :root {
+    //     --jxb-show-poster-width: 580px;
+    // }
+}
+
+@media screen and (max-aspect-ratio: 375 / 667) {
+
+    // 如果宽高比大于375:667的话，显示这个内容
+    // body {
+    //     background: blue;
+    // }
+}
+
+
+#app {
+    max-width: 750px;
+    margin: 0 auto;
+    font-size: 24px;
+    min-height: 100vh;
+}
+
+/* zui => ztc-ui */
+.zui {
+    &-button {
+        appearance: none;
+        outline: none;
+        border: none;
+
+        // base
+        // base
+        width: 100%;
+        // font-size: var(--zui-button-fontSize);
+        font-size: 32px;
+        line-height: 1.2;
+        padding: 24px;
+        box-sizing: border-box;
+
+        color: var(--zui--disabled--text);
+        background: var(--zui--disabled--color);
+        border-radius: var(--zui-button-radius);
+
+        &.on {
+            color: var(--zui-button-color);
+            background: var(--zui-button-bgColor);
+        }
+
+        &:active {
+            opacity: 0.8;
+        }
+
+        // mini
+        &__mini {
+            width: auto;
+            font-size: var(--zui-button-fontSize);
+            line-height: 1.2;
+            padding: 14px 24px;
+
+            color: var(--zui--disabled--text);
+            background: var(--zui--disabled--color);
+            border-radius: var(--zui-button-radius);
+
+            &.on {
+                color: var(--zui-button-color);
+                background: var(--zui-button-bgColor);
+            }
+
+            &:active {
+                opacity: 0.8;
+            }
+        }
+    }
+
+    // cell
+    &-cell {
+        display: flex;
+        align-items: center;
+        position: relative;
+        // css var
+        --label-le: 94px;
+        --label-fs: 26px;
+
+        --content-fs: 28px;
+
+        &__label {
+            flex-shrink: 0;
+            flex-basis: 160px;
+            line-height: var(--label-le);
+            font-size: var(--label-fs);
+            color: #333333;
+        }
+
+        &__content {
+            flex: 1;
+            display: flex;
+            padding-right: 32px;
+            font-size: var(--content-fs);
+        }
+
+        &:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-top: 1px solid #cccccc;
+            transform: scaleY(0.5);
+        }
+    }
+
+    // vant
+    &-vant-dialog {
+        border-radius: 8px;
+    }
+
+    &-vant-toast {
+        border-radius: 8px;
+        padding: 35px 40px;
+        background-color: rgba(229, 229, 229, 0.9);
+
+        .van-toast__text {
+            font-size: 28px;
+            color: #333333;
+        }
+    }
+}
+
+@keyframes tagSaveAnimate {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: .5;
+    }
+}
+
+/* common.css E */

@@ -2,7 +2,10 @@ import { createSSRApp } from 'vue'
 import { createRouter } from './router'
 import { createPinia } from 'pinia'
 import App from '@/App.vue'
-import { createMetaManager, plugin, useMeta } from 'vue-meta'
+import { createMetaManager, plugin } from 'vue-meta'
+
+// 公共样式
+import '@/scss/common.scss'
 
 export function createApp() {
     const app = createSSRApp(App)

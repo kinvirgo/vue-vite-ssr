@@ -1,0 +1,21 @@
+/* 注意：此文件为全局scss,无需手动引入;会在vue.config.js中自动注入每个样式之前。该文件尽量只定义变量使用*/
+
+@function img-url($type, $img) {
+    // @return url("~__ASSETS__/#{$type}/#{$img}");
+    @return url("https://h5static.oss-accelerate.aliyuncs.com/lapp/vip/search-notices/#{$type}/#{$img}");
+}
+
+/* icon */
+@function url-icon($img) {
+    @return img-url("icon", $img);
+}
+
+/* img */
+@function url-img($img) {
+    @return img-url("img", $img);
+}
+
+/* url-btn */
+@function url-btn($img) {
+    @return img-url("btn", $img);
+}
