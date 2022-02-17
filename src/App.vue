@@ -1,4 +1,6 @@
 <template>
+    <!-- metainfo -->
+    <metainfo />
     <h3>服务器渲染</h3>
     <ul>
         <li>

@@ -6,6 +6,11 @@
     import { defineComponent, reactive, toRefs, useSSRContext } from 'vue'
     import { useInitStore } from '@/stores/init'
     export default defineComponent({
+        metaInfo() {
+            return {
+                title: 'home - My Options API title',
+            }
+        },
         async asyncData({ route, store }) {
             // 存储到store中
             store.homeInitState = { title: '测试home1' }

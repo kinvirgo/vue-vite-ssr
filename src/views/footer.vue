@@ -5,6 +5,11 @@
     import { defineComponent, reactive, toRefs } from 'vue'
     import { useInitStore } from '@/stores/init'
     export default defineComponent({
+        metaInfo() {
+            return {
+                title: 'footer - My Options API title',
+            }
+        },
         async asyncData({ store }) {
             // 存储到store中
             store.footerInitState = { text: '来自footer的异步数据' }
@@ -21,7 +26,7 @@
     })
 </script>
 <style lang="scss">
-.h4{
-    color: red;
-}
+    .h4 {
+        color: red;
+    }
 </style>

@@ -55,9 +55,10 @@ async function createServer(root = process.cwd(), isProd = process.env.NODE_ENV 
                 template = await vite.transformIndexHtml(url, template)
                 render = (await vite.ssrLoadModule('/src/entry-server.js')).render
             }
-            let { html, state, preloadLinks } = await render(url, manifest)
+            let { html, state, preloadLinks, teleports } = await render(url, manifest)
             // 替换html标记
             html = template
+                .replace(`<!--app-head-->`, teleports.head)
                 .replace(`<!--preload-links-->`, preloadLinks)
                 .replace(`<!--initial-data-->`, `<script>window.__INITIAL_DATA__=${state}</script>`)
                 .replace(`<!--app-html-->`, html)

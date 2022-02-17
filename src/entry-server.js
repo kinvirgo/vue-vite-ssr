@@ -4,6 +4,7 @@ import serialize from 'serialize-javascript'
 import { useInitStore } from '@/stores/init'
 import { executeAsyncData, getMatchedComponents } from '@/utils/share'
 import { basename } from 'path'
+import { renderMetaToString } from 'vue-meta/ssr'
 
 export async function render(url, manifest) {
     const { app, router, pinia } = createApp()
@@ -17,14 +18,15 @@ export async function render(url, manifest) {
     const route = router.currentRoute.value
     await executeAsyncData(getMatchedComponents(route), { route, store })
 
-    const ctx = { title: 'vue服务器渲染' }
+    const ctx = {}
     const html = await renderToString(app, ctx)
+    await renderMetaToString(app, ctx)
 
     const preloadLinks = renderPreloadLinks(ctx.modules, manifest)
-
+    const teleports = ctx.teleports || {}
     const state = serialize(pinia.state.value)
 
-    return { html, state, preloadLinks }
+    return { html, state, preloadLinks, teleports }
 }
 
 function renderPreloadLinks(modules, manifest) {
