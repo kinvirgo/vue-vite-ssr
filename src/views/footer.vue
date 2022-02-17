@@ -1,5 +1,5 @@
 <template>
-    <h4 class="h4">这里是footer--{{ text }}</h4>
+    <h4 class="h4">{{ asyncText }}</h4>
 </template>
 <script>
     import { defineComponent, reactive, toRefs } from 'vue'
@@ -7,12 +7,12 @@
     export default defineComponent({
         metaInfo() {
             return {
-                title: 'footer - My Options API title',
+                title: '二级路由-服务器渲染',
             }
         },
         async asyncData({ store }) {
             // 存储到store中
-            store.footerInitState = { text: '来自footer的异步数据' }
+            store.footerInitState = { asyncText: '来自footer的异步数据' }
         },
         setup(props, context) {
             // 初始数据

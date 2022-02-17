@@ -1,5 +1,6 @@
 <template>
-    <h3>首页-{{ title }}</h3>
+    <img src="https://h5static.oss-cn-shenzhen.aliyuncs.com/lapp/vip/new-years-day/img/img-list-banner.jpg" alt="vite" />
+    <h3>异步数据：{{ content }}</h3>
     <router-view></router-view>
 </template>
 <script>
@@ -8,12 +9,12 @@
     export default defineComponent({
         metaInfo() {
             return {
-                title: 'home - My Options API title',
+                title: '首页-服务器渲染',
             }
         },
         async asyncData({ route, store }) {
             // 存储到store中
-            store.homeInitState = { title: '测试home1' }
+            store.homeInitState = { content: '我是来自服务器数据' }
         },
         setup(props, context) {
             // 初始数据
