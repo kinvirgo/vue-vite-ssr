@@ -37,7 +37,7 @@ async function createServer(root = process.cwd(), isProd = process.env.NODE_ENV 
     // html模版
     const htmlTemplate = isProd ? fs.readFileSync(resolve('dist/client/index.html'), 'utf-8') : ''
     // 映射文件
-    // const manifest = isProd ? require('./dist/client/ssr-manifest.json') : {}
+    const manifest = isProd ? require('./dist/client/ssr-manifest.json') : {}
 
     app.get('/ssr/*', async (req, res) => {
         const { url, query } = req
@@ -55,9 +55,10 @@ async function createServer(root = process.cwd(), isProd = process.env.NODE_ENV 
                 template = await vite.transformIndexHtml(url, template)
                 render = (await vite.ssrLoadModule('/src/entry-server.js')).render
             }
-            let { html, state } = await render(url, query)
+            let { html, state, preloadLinks } = await render(url, manifest)
             // 替换html标记
             html = template
+                .replace(`<!--preload-links-->`, preloadLinks)
                 .replace(`<!--init-data-->`, `<script>window.__INITIAL_DATA__=${state}</script>`)
                 .replace(`<!--app-html-->`, html)
 

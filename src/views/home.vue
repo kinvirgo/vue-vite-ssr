@@ -3,7 +3,7 @@
     <router-view></router-view>
 </template>
 <script>
-    import { defineComponent, reactive, toRefs } from 'vue'
+    import { defineComponent, reactive, toRefs, useSSRContext } from 'vue'
     import { useInitStore } from '@/stores/init'
     export default defineComponent({
         async asyncData({ route, store }) {
@@ -14,6 +14,11 @@
             // 初始数据
             const store = useInitStore()
             const state = reactive({ ...store.homeInitState })
+
+            // if (import.meta.env.SSR) {
+            //     const ctx = useSSRContext()
+            //     console.log('>>> ctx', ctx)
+            // }
 
             return {
                 ...toRefs(state),
