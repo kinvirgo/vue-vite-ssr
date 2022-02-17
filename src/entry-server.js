@@ -2,7 +2,7 @@ import { createApp } from './main'
 import { renderToString } from 'vue/server-renderer'
 import serialize from 'serialize-javascript'
 import { useInitStore } from '@/stores/init'
-import { executeAsyncData } from '@/utils/share'
+import { executeAsyncData, getMatchedComponents } from '@/utils/share'
 
 export async function render(url) {
     const { app, router, pinia } = createApp()
@@ -13,7 +13,8 @@ export async function render(url) {
     await router.isReady()
 
     // 执行asyncData(); 注意顺序与renderToString的顺序
-    await executeAsyncData(router.currentRoute.value, store)
+    const route = router.currentRoute.value
+    await executeAsyncData(getMatchedComponents(route), { route, store })
 
     const ctx = {}
     const html = await renderToString(app, ctx)

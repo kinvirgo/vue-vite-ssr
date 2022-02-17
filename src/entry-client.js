@@ -1,11 +1,6 @@
 import { createApp } from './main'
 import { useInitStore } from './stores/init'
-import {
-    executeAsyncData,
-    getMatchedComponents,
-    getNeedExecuteComponents,
-    _executeAsyncData,
-} from '@/utils/share'
+import { executeAsyncData, getMatchedComponents, getNeedExecuteComponents } from '@/utils/share'
 
 const { app, router, pinia } = createApp()
 
@@ -15,17 +10,16 @@ router.isReady().then(() => {
         pinia.state.value = window.__INITIAL_DATA__
     } else {
         const route = router.currentRoute.value
-        _executeAsyncData(getMatchedComponents(route), { route, store: useInitStore() })
+        executeAsyncData(getMatchedComponents(route), { route, store: useInitStore() })
     }
 
     // 路由钩子函数
     router.beforeResolve(async (to, from) => {
-        const components = getNeedExecuteComponents(
-            getMatchedComponents(to.matched),
-            getMatchedComponents(from.matched),
+        // 执行asyncData
+        await executeAsyncData(
+            getNeedExecuteComponents(getMatchedComponents(to), getMatchedComponents(from)),
+            { route: to, store: useInitStore() },
         )
-
-        await _executeAsyncData(components)
 
         // let toMatchedComponents = getMatchedComponents(to.matched)
         // let fromMatchedComponents = getMatchedComponents(from.matched)
