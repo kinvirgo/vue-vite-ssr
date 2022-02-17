@@ -1,5 +1,5 @@
 <template>
-    <img src="https://h5static.oss-cn-shenzhen.aliyuncs.com/lapp/vip/new-years-day/img/img-list-banner.jpg" alt="vite" />
+    <img src="https://camo.githubusercontent.com/c8f91d18976e27123643a926a2588b8d931a0292fd0b6532c3155379e8591629/68747470733a2f2f7675656a732e6f72672f696d616765732f6c6f676f2e706e67" alt="vite" />
     <h3>异步数据：{{ content }}</h3>
     <router-view></router-view>
 </template>
