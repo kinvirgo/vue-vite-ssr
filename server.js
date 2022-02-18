@@ -99,7 +99,7 @@ async function createServer(root = process.cwd(), isProd = process.env.NODE_ENV 
 
 // 创建服务
 createServer().then(({ app }) => {
-    app.listen(18080, () => {
-        console.log('[server] http://localhost:18080')
+    app.listen(18081, () => {
+        console.log('[server] http://localhost:18081')
     })
 })
