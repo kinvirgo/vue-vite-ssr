@@ -4,7 +4,7 @@ import { resolve } from 'path'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-    base: '/ssr/',
+    base: process.env.NODE_ENV === 'production' ? '/ssr/' : '/',
     plugins: [vue()],
     resolve: {
         alias: {
